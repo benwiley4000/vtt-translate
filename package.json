@@ -1,0 +1,30 @@
+{
+  "name": "vtt-translate",
+  "version": "0.1.0",
+  "description": "Use Google Translate to translate VTT subtitle files.",
+  "main": "vtt-translate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/benwiley4000/vtt-translate.git"
+  },
+  "keywords": [
+    "vtt",
+    "webvtt",
+    "subtitles",
+    "captions",
+    "translate"
+  ],
+  "author": "Ben Wiley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benwiley4000/vtt-translate/issues"
+  },
+  "homepage": "https://github.com/benwiley4000/vtt-translate#readme",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "node-webvtt": "^1.2.0"
+  }
+}

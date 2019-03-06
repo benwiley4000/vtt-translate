@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+const { getTranslatedVttForPathname } = require('../vtt-translate.js');
+const fs = require('fs');
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function ask(q) {
+  return new Promise(resolve => rl.question(q, resolve));
+}
+
+function writeFile(pathname, data) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(pathname, data, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
+async function run() {
+  const sourcePathname = await ask('Input VTT filename: ');
+  const sourceLanguage = await ask('Source language code: ');
+  const destLanguage = await ask('Destination language code: ');
+  const apiKey = await ask('Google Translate API key (https://cloud.google.com/translate/): ');
+
+  console.log('Translating...');
+  const translated = await getTranslatedVttForPathname(sourcePathname, apiKey, {
+    source: sourceLanguage,
+    target: destLanguage,
+    format: 'text'
+  });
+
+  console.log('Translation complete!');
+  let destPathname = await ask('Destination VTT filename: ');
+  if (!destpathname.endsWith('.vtt')) {
+    destPathname += '.vtt';
+  }
+  await writeFile(destPathname, translated);
+}
+
+run();
