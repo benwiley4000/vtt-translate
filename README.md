@@ -6,6 +6,8 @@ Not exactly the best idea...
 
 ## install
 
+TODO: publish to npm when finalized and replace with npm registry install instructions
+
 0. Install Node.js
 1. Clone this repo
 2. `npm install`
