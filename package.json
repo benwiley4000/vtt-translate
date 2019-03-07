@@ -26,5 +26,11 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "node-webvtt": "^1.2.0"
-  }
+  },
+  "bin": {
+    "vtt-translate": "bin/vtt-translate"
+  },
+  "engines": {
+    "node": ">=7.10.1",
+  },
 }
