@@ -25,17 +25,32 @@ function writeFile(pathname, data) {
   });
 }
 
+function removeFile(pathname) {
+  return new Promise((resolve, reject) => {
+    fs.unlink(pathname, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+
 async function run() {
   const sourcePathname = await ask('Input VTT filename: ');
   const sourceLanguage = await ask('Source language code: ');
   const destLanguage = await ask('Destination language code: ');
   const apiKey = await ask('Google Translate API key (https://cloud.google.com/translate/): ');
 
+  const restoredCuesPathname = `${sourcePathname}.${sourceLanguage}.${destLanguage}.temp.json`;
+
   console.log('Translating...');
   try {
     const translated = await getTranslatedVttForPathname(sourcePathname, apiKey, {
       source: sourceLanguage,
-      target: destLanguage
+      target: destLanguage,
+      restoredCuesPathname
     });
 
     console.log('Translation complete!');
@@ -44,8 +59,20 @@ async function run() {
       destPathname += '.vtt';
     }
     await writeFile(destPathname, translated);
-  } catch(err) {
+    try {
+      // we don't need the restore file anymore
+      await removeFile(restoredCuesPathname);
+    } catch (err) {
+      // it's fine if this fails silently
+    }
+  } catch (err) {
     console.error(err);
+    const { translatedCues } = err;
+    if (translatedCues && translatedCues.length) {
+      await writeFile(restoredCuesPathname, JSON.stringify(translatedCues));
+      console.log('');
+      console.log('Saving temp file so we can resume later where we left off...');
+    }
   }
 
   rl.close();
