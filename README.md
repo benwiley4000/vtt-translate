@@ -25,6 +25,7 @@ Google Translate API key (https://cloud.google.com/translate/): [Paste your API 
 Translating...
 Translation complete!
 Destination VTT filename: ./vtt/transcript_fr.vtt
+$
 ```
 
 See the Node API description for explanation of the command line inputs.
