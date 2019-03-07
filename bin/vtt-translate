@@ -32,18 +32,24 @@ async function run() {
   const apiKey = await ask('Google Translate API key (https://cloud.google.com/translate/): ');
 
   console.log('Translating...');
-  const translated = await getTranslatedVttForPathname(sourcePathname, apiKey, {
-    source: sourceLanguage,
-    target: destLanguage,
-    format: 'text'
-  });
+  try {
+    const translated = await getTranslatedVttForPathname(sourcePathname, apiKey, {
+      source: sourceLanguage,
+      target: destLanguage,
+      format: 'text'
+    });
 
-  console.log('Translation complete!');
-  let destPathname = await ask('Destination VTT filename: ');
-  if (!destpathname.endsWith('.vtt')) {
-    destPathname += '.vtt';
+    console.log('Translation complete!');
+    let destPathname = await ask('Destination VTT filename: ');
+    if (!destPathname.endsWith('.vtt')) {
+      destPathname += '.vtt';
+    }
+    await writeFile(destPathname, translated);
+  } catch(err) {
+    console.error(err);
   }
-  await writeFile(destPathname, translated);
+
+  rl.close();
 }
 
 run();

@@ -25,7 +25,6 @@ async function translateParsedVtt(parsed, apiKey, params) {
       body: stringifyRequest(cues.map(cue => cue.text), params)
     }).then(res => res.json());
     if (response.error) {
-      console.error(response.error);
       return Promise.reject(response.error);
     }
     for (let j = 0; j < response.data.translations.length; j++) {
