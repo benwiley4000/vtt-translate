@@ -4,6 +4,7 @@ const fetch = require('isomorphic-fetch');
 
 function stringifyRequest(inputStrings, params) {
   params = Object.assign({}, params);
+  params.format = 'text';
   delete params.q;
   delete params.key;
   let s = JSON.stringify(params);

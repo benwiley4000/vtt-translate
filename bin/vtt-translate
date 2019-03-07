@@ -35,8 +35,7 @@ async function run() {
   try {
     const translated = await getTranslatedVttForPathname(sourcePathname, apiKey, {
       source: sourceLanguage,
-      target: destLanguage,
-      format: 'text'
+      target: destLanguage
     });
 
     console.log('Translation complete!');
