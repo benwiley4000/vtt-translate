@@ -28,7 +28,7 @@ Destination VTT filename: ./vtt/transcript_fr.vtt
 $
 ```
 
-(Note that API limits apply... if you fill your daily quota, a restore file will be saved so you can continue the next day without losing your progress.)
+(Note that API limits apply... if you fill your daily quota, a restore file will be saved so you can continue the next day without losing your progress. Once the download completes, the temp file will be deleted.)
 
 See the Node API description for explanation of the command line inputs.
 
