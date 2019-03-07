@@ -6,6 +6,8 @@ Not exactly the best idea...
 
 Requires [Node.js](https://nodejs.org) 7.10.1 or later.
 
+(Note that API limits apply... if you're on an unpaid plan, you might have trouble completing transcriptions for very long recordings. If you want to open a PR to support resumable translations which can be downloaded across multiple sessions, that would be great!)
+
 ## command line
 
 ### install
