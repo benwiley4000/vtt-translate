@@ -29,7 +29,7 @@ async function translateParsedVtt(parsed, apiKey, params) {
       return Promise.reject(response.error);
     }
     for (let j = 0; j < response.data.translations.length; j++) {
-      parsed.cues[j].text = response.data.translations[j].translatedText;
+      parsed.cues[i + j].text = response.data.translations[j].translatedText;
     }
   }
 }
