@@ -31,6 +31,6 @@
     "vtt-translate": "bin/vtt-translate"
   },
   "engines": {
-    "node": ">=7.10.1",
-  },
+    "node": ">=7.10.1"
+  }
 }
