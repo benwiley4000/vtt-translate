@@ -27,10 +27,32 @@ Translation complete!
 Destination VTT filename: ./vtt/transcript_fr.vtt
 $
 ```
+See the [Node API](#node-api) description for explanation of the command line inputs.
 
-(Note that API limits apply... if you fill your daily quota, a restore file will be saved so you can continue the next day without losing your progress. Once the download completes, the temp file will be deleted.)
+Note that API limits apply... if you fill your daily quota, a restore file will be saved so you can continue the next day without losing your progress:
 
-See the Node API description for explanation of the command line inputs.
+```console
+$ vtt-translate 
+Input VTT filename: ./vtt/transcript_en.vtt
+Source language code: en
+Destination language code: fr
+Google Translate API key (https://cloud.google.com/translate/): [Paste your API key here]
+Translating...
+{ code: 403,
+  message: 'User Rate Limit Exceeded',
+  errors: 
+   [ { message: 'User Rate Limit Exceeded',
+       domain: 'usageLimits',
+       reason: 'userRateLimitExceeded' } ],
+  translatedCues: 
+   [ ... ] }
+
+Saving temp file so we can resume later where we left off...
+```
+
+Don't remove this temp file! Otherwise you'll have to start over from scratch later.
+
+Once the download completes, the temp file will be deleted automatically.
 
 ## Node API
 
