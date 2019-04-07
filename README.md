@@ -48,6 +48,7 @@ Translating...
    [ ... ] }
 
 Saving temp file so we can resume later where we left off...
+$
 ```
 
 Don't remove this temp file! Otherwise you'll have to start over from scratch later.
