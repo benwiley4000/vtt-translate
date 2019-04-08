@@ -67,11 +67,25 @@ async function run() {
     }
   } catch (err) {
     console.error(err);
-    const { translatedCues } = err;
+    const {
+      translatedCues,
+      totalNumberCuesToTranslate,
+      numberNewlyTranslatedCues
+    } = err;
     if (translatedCues && translatedCues.length) {
       await writeFile(restoredCuesPathname, JSON.stringify(translatedCues));
       console.log('');
       console.log('Saving temp file so we can resume later where we left off...');
+      if (totalNumberCuesToTranslate) {
+        console.log(
+          'Progress:',
+          translatedCues.length,
+          'of',
+          totalNumberCuesToTranslate,
+          'cues',
+          `(${numberNewlyTranslatedCues} newly translated)`
+        );
+      }
     }
   }
 

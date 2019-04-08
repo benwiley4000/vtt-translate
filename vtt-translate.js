@@ -24,7 +24,7 @@ async function translateParsedVtt(parsed, apiKey, params) {
   if (params.restoredCuesPathname) {
     try {
       translatedCues = JSON.parse(await readFile(params.restoredCuesPathname));
-      assert(translatedCues.isArray());
+      assert(Array.isArray(translatedCues));
     } catch (err) {
       translatedCues = [];
     }
@@ -33,6 +33,7 @@ async function translateParsedVtt(parsed, apiKey, params) {
   for (; i < translatedCues.length && i < parsed.cues.length; i++) {
     parsed.cues[i].text = translatedCues[i];
   }
+  const numberAlreadyTranslated = i;
 
   const max_fetch_size = 128;
   for (; i < parsed.cues.length; i += max_fetch_size) {
@@ -43,6 +44,9 @@ async function translateParsedVtt(parsed, apiKey, params) {
     }).then(res => res.json());
     if (response.error) {
       response.error.translatedCues = translatedCues;
+      response.error.numberNewlyTranslatedCues =
+        translatedCues.length - numberAlreadyTranslated;
+      response.error.totalNumberCuesToTranslate = parsed.cues.length;
       return Promise.reject(response.error);
     }
     for (let j = 0; j < response.data.translations.length; j++) {
