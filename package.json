@@ -1,6 +1,6 @@
 {
   "name": "vtt-translate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Use Google Translate to translate VTT subtitle files.",
   "main": "vtt-translate.js",
   "scripts": {
