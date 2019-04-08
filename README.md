@@ -48,6 +48,7 @@ Translating...
    [ ... ] }
 
 Saving temp file so we can resume later where we left off...
+Progress: 2688 of 2767 cues (2688 newly translated)
 $
 ```
 
