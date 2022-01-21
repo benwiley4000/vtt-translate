@@ -12,7 +12,7 @@ I really want to emphasize that this isn't a great way to produce a translation 
 
 If you're working on a volunteer-based project with no budget, or you just need some test data, this can work well enough for you.
 
-Keep in mind that translations are done line by line, so they can and probably will be occasionally mistranslated due to lack of context.
+Keep in mind that translations are done in fixed sized batches of a certain number of lines, so there probably will be occasional translation errors specifically due to context being cut off from the beginning or end of a batch of text. 
 
 ## command line
 
