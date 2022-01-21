@@ -6,6 +6,14 @@ Not exactly the best idea...
 
 Requires [Node.js](https://nodejs.org) 7.10.1 or later.
 
+### disclaimer
+
+I really want to emphasize that this isn't a great way to produce a translation for your video/audio content. The best way is to hire a professional translator. If you have a budget for producing your content, and you need a translation, please allocate some of that budget for paying a translator.
+
+If you're working on a volunteer-based project with no budget, or you just need some test data, this can work well enough for you.
+
+Keep in mind that translations are done line by line, so they can and probably will be occasionally mistranslated due to lack of context.
+
 ## command line
 
 ### install
